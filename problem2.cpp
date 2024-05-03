@@ -1,25 +1,25 @@
 #include <iostream>
 #include <vector>
- using namespace std;
+using namespace std;
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int a, b;
+    cin >> a >> b;
 
-    vector<vector<int>> graph(n);
+    vector<vector<int>> graph(a);
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < b; i++) {
         int u, v;
         cin >> u >> v;
         graph[u].push_back(v);
         graph[v].push_back(u); }
-    int q;
-    cin >> q;
-    for (int i = 0; i < q; i++) {
-        int u, v;
-        cin >> u >> v;
+    int queue;
+    cin >> queue;
+    for (int i = 0; i < queue; i++) {
+        int x, y;
+        cin >> x >> y;
         bool found = false;
-        for (int j = 0; j < graph[u].size(); j++) {
-            if (graph[u][j] == v) {
+        for (int j = 0; j < graph[x].size(); j++) {
+            if (graph[x][j] == y) {
                 found = true;
                 break;
             }
