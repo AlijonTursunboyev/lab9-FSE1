@@ -1,35 +1,40 @@
-#include <iostream> 
-#include <vector> 
-#include <unordered_set> 
+
+#include <iostream>
+#include <vector>
+#include <unordered_set>
 using namespace std;
-vector<vector<int>> graph; 
-vector<bool> visited; 
-int numComponents; 
-void dfs(int u) { 
-  visited[u] = true; 
-  for (int v : graph[u]) {
-    if (!visited[v]) { 
-      dfs(v); 
-    } 
-  } 
+
+vector<vector<int>> graph;
+vector<bool> visited;
+int numComp;
+void dfs(int u) {
+    visited[u] = true;
+    for (int v : graph[u]) {
+        if (!visited[v]) {
+            dfs(v);
+        }
+    }
 }
-int main() { 
-  int n, m;
-  cin >> n >> m;
-  graph.resize(n);
-  visited.resize(n, false);
-  numComponents = 0; 
-  for (int i = 0; i < m; i++) {
-    int u, v; 
-    cin >> u >> v;
-    graph[u].push_back(v);
-    graph[v].push_back(u); 
-  }
-  for (int i = 0; i < n; i++) {
-    if (!visited[i]) {
-      dfs(i); numComponents++; 
-    } 
-  } 
-  cout << numComponents << endl; 
-  return 0; 
+int main() {
+    int a, b;
+    cin >> a>> b;
+    
+    graph.resize(a);
+    
+    visited.resize(a, false);
+    
+    numComp= 0;
+    for (int i = 0; i < b; i++) {
+        int u, v;
+        cin >> u >> v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
+    for (int i = 0; i < a; i++) {
+        if (!visited[i]) {
+            dfs(i); numComp++;
+        }
+    }
+    cout << numComp << endl;
+    return 0;
 }
